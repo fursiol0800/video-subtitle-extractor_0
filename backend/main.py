@@ -1008,10 +1008,13 @@ if __name__ == '__main__':
     multiprocessing.set_start_method("spawn")
     # 提示用户输入视频路径
     video_path = input(f"{config.interface_config['Main']['InputVideo']}").strip()
+    video_path = sys.argv[1].strip()
     # 提示用户输入字幕区域
     try:
-        y_min, y_max, x_min, x_max = map(int, input(
-            f"{config.interface_config['Main']['ChooseSubArea']} (ymin ymax xmin xmax)：").split())
+        #y_min, y_max, x_min, x_max = map(int, input(
+        #    f"{config.interface_config['Main']['ChooseSubArea']} (ymin ymax xmin xmax)：").split())
+        #subtitle_area = (y_min, y_max, x_min, x_max)
+        y_min, y_max, x_min, x_max = map(int, sys.argv[2].split())
         subtitle_area = (y_min, y_max, x_min, x_max)
     except ValueError as e:
         subtitle_area = None
